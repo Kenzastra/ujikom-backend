@@ -12,6 +12,9 @@ const Barangs = db.define('barangs',{
     nama_barang:{
         type:DataTypes.STRING
     },
+    satuan_barang:{
+        type:DataTypes.STRING
+    },
     stok_barang:{
         type:DataTypes.INTEGER
     },
