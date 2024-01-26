@@ -10,16 +10,34 @@ const Users = db.define('users',{
         autoIncrement:true
     },
     nama:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull:false,
+        validate:{
+            notEmpty:true,
+            len:[3,100]
+        }
     },
     username:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull:false,
+        validate:{
+            notEmpty:true,
+            len:[3,100]
+        }
     },
     password:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull:false,
+        validate:{
+            notEmpty:true,
+        }
     },
     role:{
-        type:DataTypes.STRING
+        type:DataTypes.STRING,
+        allowNull:false,
+        validate:{
+            notEmpty:true,
+        }
     }
 },{
     freezeTableName:true

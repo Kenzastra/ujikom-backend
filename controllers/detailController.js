@@ -3,5 +3,8 @@ import Penjualan from "../models/penjualanModel.js";
 import Barangs from "../models/barangModel.js";
 
 export const addDetail = async(req,res) => {
-    const {id_barang, jumlah_produk,subtotal} = req.body
+
+    const {id_barang, jumlah_produk,subtotal} = req.body;
+    if(id_barang,jumlah_produk,subtotal) return
+
 }

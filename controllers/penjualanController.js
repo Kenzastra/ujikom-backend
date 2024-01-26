@@ -1,6 +1,6 @@
 import Penjualan from "../models/penjualanModel.js";
 
-export const addPenjualan = async(req,res) => {
+export const updatePenjualan = async(req,res) => {
     const {total_harga} = req.body;
     try {
         await Penjualan.create({

@@ -2,7 +2,23 @@ import Barangs from "../models/barangModel.js";
 
 export const getBarang = async (req,res) => {
     try {
-        const response = await Barangs.findAll();
+        const response = await Barangs.findAll({
+            attributes:['id_barang','nama_barang','satuan_barang','stok_barang','harga_barang']
+        });
+        res.json(response);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getBarangById = async (req,res) => {
+    try {
+        const response = await Barangs.findOne({
+            where:{
+                id_barang:req.params.id_barang
+            },
+            attributes:['id_barang','nama_barang','satuan_barang','stok_barang','harga_barang']
+        });
         res.json(response);
     } catch (error) {
         console.log(error)
