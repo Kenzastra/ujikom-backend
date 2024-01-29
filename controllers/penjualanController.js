@@ -1,5 +1,14 @@
 import Penjualan from "../models/penjualanModel.js";
 
+export const createPenjualan = async(req,res) => {
+    try {
+        const penjualan = await Penjualan.create();
+        res.status(201).json(penjualan)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const updatePenjualan = async(req,res) => {
     const {total_harga} = req.body;
     try {

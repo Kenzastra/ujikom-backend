@@ -15,7 +15,8 @@ const Penjualan = db.define('penjualan',{
         defaultValue:DataTypes.NOW
     },
     total_harga:{
-        type:DataTypes.DECIMAL
+        type:DataTypes.DECIMAL,
+        allowNull:true
     }
 },{
     freezeTableName:true

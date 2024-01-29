@@ -11,7 +11,8 @@ const Details = db.define('details',{
         autoIncrement:true,
     },
     id_penjualan:{
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        allowNull:true
     },
     id_barang:{
         type:DataTypes.INTEGER
