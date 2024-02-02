@@ -1,3 +1,5 @@
+import { Op } from "sequelize";
+import Barangs from "../models/barangModel.js";
 import Penjualan from "../models/penjualanModel.js";
 
 export const createPenjualan = async(req,res) => {
@@ -19,4 +21,22 @@ export const updatePenjualan = async(req,res) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const cartPenjualan = async(req,res) => {
+    const {id_barang, nama_barang,jumlah_produk} = req.body; 
+    let where;
+    if(id_barang == null || id_barang == "")
+    where = {nama_barang : req.body.nama_barang}
+    else where = {id_barang: req.body.id_barang};
+    try {
+        const cart = await Barangs.findOne({
+            attributes:['id_barang','nama_barang','harga_barang'],
+            where: where
+        });
+        res.json(cart);
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
