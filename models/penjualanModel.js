@@ -12,7 +12,7 @@ const Penjualan = db.define('penjualan',{
     },
     tanggal_penjualan:{
         type:DataTypes.DATE,
-        defaultValue:DataTypes.NOW
+        defaultValue:DataTypes.NOW,
     },
     total_harga:{
         type:DataTypes.DECIMAL,
