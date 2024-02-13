@@ -1,12 +1,12 @@
 import express from "express";
-import { cartPenjualan, createPenjualan } from "../controllers/penjualanController.js";
-import { addDetail, getDetail } from "../controllers/detailController.js";
+import {
+    Checkout, getKeranjang
+} from "../controllers/transaksiController.js";
 
 const route = express.Router();
 
-route.get("/detail",getDetail);
-route.post("/cart",cartPenjualan);
-route.post("/transaksi",createPenjualan);
-route.post("/detail",addDetail);
+route.get('/keranjang',getKeranjang);
+route.post('/checkout',Checkout);
+
 
 export default route;

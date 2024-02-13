@@ -17,6 +17,9 @@ const Details = db.define('details',{
     id_barang:{
         type:DataTypes.INTEGER
     },
+    nama_barang:{
+        type: DataTypes.STRING
+    },
     jumlah_produk:{
         type:DataTypes.INTEGER
     },

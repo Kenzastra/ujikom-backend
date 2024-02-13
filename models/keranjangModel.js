@@ -14,7 +14,15 @@ const Keranjang = db.define('keranjang',{
     },
     nama_barang : {
         type: DataTypes.STRING
+    },
+    jumlah_produk: {
+        type: DataTypes.INTEGER
+    },
+    total:{
+        type: DataTypes.DECIMAL
     }
 },{
     freezeTableName: true
 })
+
+export default Keranjang;

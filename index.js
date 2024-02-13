@@ -13,6 +13,8 @@ import Users from "./models/userModel.js";
 import Barangs from "./models/barangModel.js";
 import Details from "./models/detailModel.js";
 import Penjualan from "./models/penjualanModel.js";
+import Keranjang from "./models/keranjangModel.js";
+
 // Routes
 import transaksiRoute from "./route/transaksiRoute.js";
 import barangRoute from "./route/barangRoute.js";
