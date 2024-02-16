@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
+import Barangs from "./barangModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -18,7 +19,7 @@ const Keranjang = db.define('keranjang',{
     jumlah_produk: {
         type: DataTypes.INTEGER
     },
-    total:{
+    subtotal:{
         type: DataTypes.DECIMAL
     }
 },{
