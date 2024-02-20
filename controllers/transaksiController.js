@@ -31,7 +31,6 @@ export const createKeranjang = async(req,res) => {
 }
 
 export const Checkout = async(req,res) => {
-    const {total_harga} = req.body;
     const penjualan = await Penjualan.create();
 
     const id_penjualan = penjualan.id_penjualan;
@@ -62,10 +61,10 @@ export const Checkout = async(req,res) => {
                     id_barang: keranjang.id_barang
                 }
             })
-            return
+
         }
         
-        total_harga = dataKeranjang.reduce(acc, item => acc + item.subtotal,0)
+        const total_harga = dataKeranjang.reduce((acc, item) => acc + item.subtotal,0)
 
         await Penjualan.update({
             total_harga: total_harga
