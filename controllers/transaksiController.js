@@ -71,6 +71,8 @@ export const Checkout = async(req,res) => {
         },{
             where:{id_penjualan:id_penjualan}
         });
+
+        await Keranjang.truncate()
         res.status(200).json({msg:"Transaksi Berhasil"})
     }
     catch(error){
