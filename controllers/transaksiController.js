@@ -4,7 +4,18 @@ import Keranjang from "../models/keranjangModel.js";
 import Barangs from "../models/barangModel.js";
 
 export const getKeranjang = async(req,res) => {
-    const keranjang = await Keranjang.findAll({});
+    const keranjang = await Keranjang.findAll({
+    });
+    res.json(keranjang);
+}
+
+export const getKeranjangById = async(req,res) => {
+    const keranjang = await Keranjang.findOne({
+        where:{
+            id_transaksi: req.params.id_transaksi
+        }
+    });
+    if(!keranjang) return res.status(404).json({msg:"Data Tidak Ditemukan!"})
     res.json(keranjang);
 }
 
@@ -22,11 +33,57 @@ export const createKeranjang = async(req,res) => {
             id_barang: id_barang,
             nama_barang: barang.nama_barang,
             jumlah_produk: jumlah_produk,
+            harga_barang: barang.harga_barang,
             subtotal: jumlah_produk * barang.harga_barang
         });
         res.status(200).json({msg:"Berhasil Menambahkan Ke Keranjang"})
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const updateQty = async(req,res) => {
+    const jumlah_produk = req.body.jumlah_produk
+    
+    const keranjang = await Keranjang.findOne({
+        where:{
+            id_transaksi:req.params.id_transaksi
+        }
+    });
+    if(!keranjang) return res.status(404).json({msg:'Data Tidak Ditemukan!'})
+    const subtotal = jumlah_produk * keranjang.harga_barang
+    try {
+        await Keranjang.update({
+            jumlah_produk: jumlah_produk,
+            subtotal: subtotal
+        },{
+            where:{
+                id_transaksi:req.params.id_transaksi
+            }
+        });
+        res.status(201).json({msg:"Berhasil Diubah"})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteKeranjang = async(req,res) => {
+    const keranjang = await Keranjang.findOne({
+        where:{
+            id_transaksi : req.params.id_transaksi
+        }
+    })
+    if(!keranjang) return res.status(404).json({msg:"Data Tidak Ada!"})
+
+    try {
+        await Keranjang.destroy({
+            where:{
+                id_transaksi: req.params.id_transaksi
+            }
+        })
+        res.status(200).json({msg:"Item Berhasil Dihapus"})
+    } catch (error) {
+        console.log(error);
     }
 }
 
@@ -44,6 +101,7 @@ export const Checkout = async(req,res) => {
                 id_penjualan:id_penjualan,
                 id_barang: keranjang.id_barang,
                 nama_barang: keranjang.nama_barang,
+                harga_barang: keranjang.harga_barang,
                 jumlah_produk: keranjang.jumlah_produk,
                 subtotal: keranjang.subtotal
             });
